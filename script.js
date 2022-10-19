@@ -57,9 +57,9 @@ class Pieces{
                 if(cell!==0){
                     this.ctx.fillStyle=this.color;
                     this.ctx.fillRect(this.x+j,this.y+i,1,1)
-                    // this.ctx.lineWidth =.1;
-                    // this.ctx.strokeStyle='black';
-                    // this.ctx.strokeRect(this.x+j,this.y+i,1,1)
+                    this.ctx.lineWidth =.1;
+                    this.ctx.strokeStyle='black';
+                    this.ctx.strokeRect(this.x+j,this.y+i,1,1)
                 }
             })
         })
@@ -105,8 +105,11 @@ class GameModel{
         for(let i=0;i<this.grid.length;i++){
             for(let j=0;j<this.grid[i].length;j++){
                 let cell=this.grid[i][j];
-                this.ctx.fillStyle='black';
+                this.ctx.fillStyle=this.color;
                 this.ctx.fillRect(j,i,1,1)
+                this.ctx.lineWidth =.1;
+                this.ctx.strokeStyle='black';
+                this.ctx.strokeRect(this.x+j,this.y+i,1,1)
             }
         }
         if(this.fallingPiece!==null){
