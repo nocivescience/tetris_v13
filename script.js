@@ -7,27 +7,27 @@ const shapes=[
         [0,0,0,0],
         [0,0,0,0],
     ],[
-        [1,1,1],
-        [0,0,1],
+        [2,2,2],
+        [0,0,2],
         [0,0,0]
     ],[
-        [1,1],
-        [1,1],
+        [3,3],
+        [3,3],
     ],[
-        [1,1,0],
-        [0,1,1],
+        [4,4,0],
+        [0,4,4],
         [0,0,0]
     ],[
-        [1,1,1],
-        [1,0,0],
+        [5,5,5],
+        [5,0,0],
         [0,0,0]
     ],[
-        [0,1,0],
-        [1,1,1],
+        [0,6,0],
+        [6,6,6],
         [0,0,0]
     ],[
-        [0,1,1],
-        [1,1,0],
+        [0,7,7],
+        [7,7,0],
         [0,0,0]
     ]
 ];
@@ -44,9 +44,8 @@ const cols=10;
 const rows=20;
 const scaling=32;
 class Pieces{
-    constructor(shape,color,ctx){
+    constructor(shape,ctx){
         this.shape=shape;
-        this.color=color;
         this.ctx=ctx;
         this.y=0;
         this.x=Math.floor(cols/2);
@@ -55,7 +54,7 @@ class Pieces{
         this.shape.map((row,i)=>{
             row.map((cell,j)=>{
                 if(cell!==0){
-                    this.ctx.fillStyle=this.color;
+                    this.ctx.fillStyle=colors[cell];
                     this.ctx.fillRect(this.x+j,this.y+i,1,1)
                     this.ctx.lineWidth =.1;
                     this.ctx.strokeStyle='black';
@@ -148,7 +147,7 @@ setInterval(()=>{
 function newGameState(){
     if(model.fallingPiece===null){
         const rand=Math.floor(Math.random()*shapes.length)
-        const newPiece=new Pieces(shapes[rand],colors[rand],ctx)
+        const newPiece=new Pieces(shapes[rand],ctx)
         model.fallingPiece=newPiece;
         model.moveDown();
     }else{
